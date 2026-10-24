@@ -1,0 +1,45 @@
+{
+  "name": "focusrite-control-2-api",
+  "version": "0.3.1",
+  "description": "Unofficial dual-transport Scarlett controller using direct USB or Focusrite Control 2",
+  "author": "alexanderdalesio",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "focusrite": "./bin/focusrite.js"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "check": "node scripts/check.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderdalesio/focusrite-control-2-api.git"
+  },
+  "homepage": "https://github.com/alexanderdalesio/focusrite-control-2-api#readme",
+  "bugs": {
+    "url": "https://github.com/alexanderdalesio/focusrite-control-2-api/issues"
+  },
+  "keywords": [
+    "focusrite",
+    "scarlett",
+    "fcp",
+    "usb",
+    "aes70",
+    "automation",
+    "audio-interface"
+  ],
+  "dependencies": {
+    "aes70": "^2.0.19",
+    "jsqr": "^1.4.0",
+    "libsodium-wrappers": "^0.8.4",
+    "pngjs": "^7.0.0",
+    "usb": "^2.17.0",
+    "ws": "^8.22.0"
+  },
+  "license": "MIT"
+}

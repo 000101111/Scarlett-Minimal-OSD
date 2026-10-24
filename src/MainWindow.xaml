@@ -1,0 +1,69 @@
+<Window x:Class="ScarlettMonitorOSD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Scarlett Minimal OSD"
+        Width="280" Height="100"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Topmost="True"
+        ShowInTaskbar="False"
+        ShowActivated="False"
+        ResizeMode="NoResize"
+        Focusable="False"
+        Opacity="0"
+        Loaded="Window_Loaded"
+        Closed="Window_Closed">
+
+    <!-- Pure minimalist rectangular OSD with Focusrite red, white, and gray palette -->
+    <Border x:Name="RootBorder" Background="#FF070707" CornerRadius="0" BorderThickness="0" 
+            SnapsToDevicePixels="True" Cursor="Hand"
+            MouseDown="RootBorder_MouseDown"
+            MouseEnter="RootBorder_MouseEnter"
+            MouseLeave="RootBorder_MouseLeave">
+        <Grid Margin="20,12,20,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Row: Monitor Group (Left) & Mute/Dim indicators (Right, only visible when active) -->
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <TextBlock x:Name="MainText" Text="MAIN"
+                               FontFamily="Bahnschrift, Segoe UI" FontSize="12" FontWeight="SemiBold"
+                               Foreground="#777777" Margin="0,0,17,0"
+                               Cursor="Hand" MouseDown="MainText_MouseDown"/>
+                    <TextBlock x:Name="AltText" Text="ALT"
+                               FontFamily="Bahnschrift, Segoe UI" FontSize="12" FontWeight="SemiBold"
+                               Foreground="#777777"
+                               Cursor="Hand" MouseDown="AltText_MouseDown"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <TextBlock x:Name="DimText" Text="DIM"
+                               FontFamily="Bahnschrift, Segoe UI" FontSize="11" FontWeight="Bold"
+                               Foreground="#EC3E4C" Margin="0,0,10,0"
+                               Visibility="Collapsed"/>
+                    <TextBlock x:Name="MuteText" Text="MUTE"
+                               FontFamily="Bahnschrift, Segoe UI" FontSize="11" FontWeight="Bold"
+                               Foreground="#EC3E4C"
+                               Visibility="Collapsed"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Bottom Row: Monitor Volume in dB -->
+            <StackPanel Grid.Row="1" Orientation="Horizontal"
+                        HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock x:Name="GainValueText" Text="--.-"
+                           FontFamily="Bahnschrift, Segoe UI" FontWeight="SemiBold"
+                           FontSize="42" Foreground="#F2F2F2"
+                           TextOptions.TextFormattingMode="Display"
+                           VerticalAlignment="Center"/>
+                <TextBlock Text="dB" FontFamily="Bahnschrift, Segoe UI" FontSize="14"
+                           FontWeight="SemiBold" Foreground="#AEAEAE"
+                           Margin="7,0,0,5" VerticalAlignment="Bottom"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,28 @@
+# Build products
+**/bin/
+**/obj/
+release/
+dist/
+publish/
+*.exe
+*.pdb
+*.zip
+node.exe
+# Installed JavaScript dependencies
+**/node_modules/
+# Local user data, pairing identity, logs
+settings.json
+**/settings.json
+osd.log
+**/osd.log
+client-key.json
+**/client-key.json
+config.json
+**/config.json
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.log
+.DS_Store

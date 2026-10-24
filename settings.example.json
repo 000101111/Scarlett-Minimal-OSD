@@ -1,0 +1,8 @@
+{
+  "BackgroundOpacity": 1.0,
+  "DisplayDurationSeconds": 2.0,
+  "VolumeStepDb": 1.0,
+  "MaxGainLimit": 0.0,
+  "AutoLaunchFc2": true,
+  "KillFc2OnExit": false
+}
