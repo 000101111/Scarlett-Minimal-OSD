@@ -2,7 +2,7 @@
 
 Minimal Windows monitoring overlay and convenient control for **Focusrite Scarlett 16i16 (4th Gen)** through Focusrite Control 2 (FC2).
 
-> **Unofficial, independent community project.** Not affiliated with or endorsed by Focusrite. "Focusrite" and "Scarlett" are trademarks of their owner. The bundled code has **not** been independently tested on Windows here; original contributor reports successful operation on their setup. Other Scarlett models are **not verified**.
+> **Unofficial, independent community project.** Not affiliated with or endorsed by Focusrite. "Focusrite" and "Scarlett" are trademarks of their owner. The Windows Release build passes on GitHub Actions. Hardware behavior has **not** been independently tested here; the original contributor reports successful operation on their setup. Other Scarlett models are **not verified**.
 
 ## At a glance
 
@@ -33,7 +33,7 @@ The FC2 application remains running when its GUI is hidden; only its window visi
 
 ## For Windows users
 
-1. Download the **Portable Preview ZIP** from GitHub Releases (if/when the maintainer publishes it), **not** this source repository ZIP.
+1. Download **Scarlett-Minimal-OSD-Windows-x64-Preview.zip** from [the preview release](https://github.com/000101111/Scarlett-Minimal-OSD/releases/tag/v0.1.0-alpha). This contains a compiled EXE; users do not need the SDK or to build the application.
 2. Extract it to a writable folder. Make sure `ScarlettMonitorOSD.exe`, `node.exe`, and `bridge/` stay together.
 3. Install .NET 8 Desktop Runtime if Windows requests it. Start the official Focusrite Control 2. If this is a new PC/profile, the compact bridge may require manual pairing using the upstream Focusrite Control API tools; it does not automatically pop up a pairing wizard.
 4. Run `ScarlettMonitorOSD.exe`. Use its tray icon to toggle the FC2 window.
@@ -60,9 +60,9 @@ The executable is a single published WPF entry point but the software is **not o
 
 Interface and settings are currently mostly in Chinese. See [`docs/LOCALIZATION.md`](docs/LOCALIZATION.md) for an AI-assisted translation prompt and how to contribute strings as a PR.
 
-## License and attribution — action required before public release
+## License and attribution — review pending
 
-The WPF application code's copyright owner needs to **choose and publish a project license**. No license is granted by uploading a repository without a LICENSE file. **This is a publication candidate, not yet a fully licensed open-source release.**
+The WPF application code's copyright owner needs to **choose and publish a project license**. No license is granted by uploading a repository without a LICENSE file. **This is a public experimental preview, not yet a fully licensed open-source release.**
 
 The `bridge/src/` code is derived from [alexanderdalesio/focusrite-control-2-api](https://github.com/alexanderdalesio/focusrite-control-2-api), which is **MIT** licensed. Its original MIT copyright notice is preserved in [`third_party/focusrite-control-2-api-LICENSE.txt`](third_party/focusrite-control-2-api-LICENSE.txt).
 
@@ -70,4 +70,4 @@ The `aes70` npm dependency is reported as **GPL-2.0**. Bundling and redistributi
 
 ## Contributing
 
-Issues, bug reports and translations are welcome after public release. When reporting bugs, **do not** post FC2 private keys, pairing details, device serial numbers or unredacted logs.
+Issues, bug reports and translations are welcome. When reporting bugs, **do not** post FC2 private keys, pairing details, device serial numbers or unredacted logs.
