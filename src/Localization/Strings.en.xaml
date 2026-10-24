@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="SettingsTitle">Scarlett OSD Settings</sys:String>
+    <sys:String x:Key="SettingsSubtitle">Appearance, gain and FC2 integration</sys:String>
+    <sys:String x:Key="OpacityLabel">Background opacity</sys:String>
+    <sys:String x:Key="OpacityHelp">0% is transparent; 100% is solid black.</sys:String>
+    <sys:String x:Key="DurationLabel">Display duration</sys:String>
+    <sys:String x:Key="DurationHelp">How long the OSD stays visible after a monitor change.</sys:String>
+    <sys:String x:Key="DurationFormat">{0:0.0} s</sys:String>
+    <sys:String x:Key="StepLabel">Wheel step</sys:String>
+    <sys:String x:Key="StepHelp">Gain change per wheel notch over the Windows tray area.</sys:String>
+    <sys:String x:Key="MaxGainLabel">Maximum gain</sys:String>
+    <sys:String x:Key="MaxGainHelp">Maximum gain for software controls (default 0.0 dB). Start testing at low monitor volume.</sys:String>
+    <sys:String x:Key="Fc2Label">Focusrite Control 2</sys:String>
+    <sys:String x:Key="AutoLaunchFc2">Start FC2 automatically with the OSD</sys:String>
+    <sys:String x:Key="KillFc2OnExit">Close FC2 when exiting the OSD</sys:String>
+    <sys:String x:Key="TestDisplay">Test OSD</sys:String>
+    <sys:String x:Key="SaveDone">Save and close</sys:String>
+    <sys:String x:Key="LanguageLabel">Interface language</sys:String>
+    <sys:String x:Key="LanguageHelp">Changes apply immediately and are saved when settings close.</sys:String>
+    <sys:String x:Key="LanguageSystem">System / 跟随系统</sys:String>
+    <sys:String x:Key="TraySettings">OSD Settings</sys:String>
+    <sys:String x:Key="ToggleFc2">Show/hide Focusrite Control 2</sys:String>
+    <sys:String x:Key="ShowFc2">Show Focusrite Control 2</sys:String>
+    <sys:String x:Key="HideFc2">Hide Focusrite Control 2</sys:String>
+    <sys:String x:Key="Exit">Exit</sys:String>
+    <sys:String x:Key="Close">Close</sys:String>
+</ResourceDictionary>

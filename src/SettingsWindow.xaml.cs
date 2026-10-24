@@ -20,7 +20,7 @@ public partial class SettingsWindow : Window
         OpacityValueText.Text = $"{OpacitySlider.Value:0}%";
 
         DurationSlider.Value = _settings.DisplayDurationSeconds;
-        DurationValueText.Text = $"{DurationSlider.Value:0.0} 秒";
+        DurationValueText.Text = Localization.Duration(DurationSlider.Value);
 
         StepSlider.Value = _settings.VolumeStepDb;
         StepValueText.Text = $"{StepSlider.Value:0.0} dB";
@@ -30,6 +30,8 @@ public partial class SettingsWindow : Window
 
         AutoLaunchFc2Check.IsChecked = _settings.AutoLaunchFc2;
         KillFc2OnExitCheck.IsChecked = _settings.KillFc2OnExit;
+        LanguageCombo.SelectedIndex = _settings.Language switch { "zh-CN" => 1, "en" => 2, _ => 0 };
+        Localization.LanguageChanged += RefreshLanguage;
 
         _initializing = false;
 
@@ -59,7 +61,7 @@ public partial class SettingsWindow : Window
     private void DurationSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         if (DurationValueText == null) return;
-        DurationValueText.Text = $"{e.NewValue:0.0} 秒";
+        DurationValueText.Text = Localization.Duration(e.NewValue);
         if (!_initializing)
         {
             _settings.DisplayDurationSeconds = e.NewValue;
@@ -106,9 +108,22 @@ public partial class SettingsWindow : Window
 
     protected override void OnClosed(EventArgs e)
     {
+        Localization.LanguageChanged -= RefreshLanguage;
         base.OnClosed(e);
         CommitSettings();
         _mainWindow.SetPreviewMode(false);
+    }
+
+    private void RefreshLanguage()
+    {
+        DurationValueText.Text = Localization.Duration(DurationSlider.Value);
+    }
+
+    private void LanguageCombo_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+    {
+        if (_initializing) return;
+        _settings.Language = LanguageCombo.SelectedIndex switch { 1 => "zh-CN", 2 => "en", _ => "auto" };
+        Localization.SetLanguage(_settings.Language);
     }
 
     private void CommitSettings()

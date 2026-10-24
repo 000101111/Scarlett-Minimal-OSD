@@ -5,7 +5,7 @@ on:
       tag:
         description: Existing preview release tag
         required: true
-        default: v0.1.0-alpha
+        default: v0.1.1-alpha
 permissions:
   contents: read
 jobs:
@@ -35,8 +35,10 @@ jobs:
           Copy-Item src, bridge, third_party -Destination $sourceDir -Recurse -Force
           Remove-Item (Join-Path $sourceDir 'bridge/node_modules') -Recurse -Force
           Remove-Item (Join-Path $sourceDir 'src/bin'), (Join-Path $sourceDir 'src/obj') -Recurse -Force -ErrorAction SilentlyContinue
-          Copy-Item README.md, THIRD_PARTY_NOTICES.md, build.ps1, build.cmd, settings.example.json -Destination $sourceDir
-          Copy-Item README.md -Destination $bundle
+          Copy-Item README.md, README.zh-CN.md, THIRD_PARTY_NOTICES.md, build.ps1, build.cmd, settings.example.json -Destination $sourceDir
+          Copy-Item docs -Destination $sourceDir -Recurse -Force
+          Copy-Item README.md, README.zh-CN.md -Destination $bundle
+          Copy-Item docs -Destination $bundle -Recurse -Force
           $nodeLicense = Join-Path (Split-Path (Get-Command node).Source) 'LICENSE'
           if (Test-Path $nodeLicense) { Copy-Item $nodeLicense (Join-Path $bundle 'NODE-LICENSE.txt') }
           git rev-parse HEAD | Set-Content (Join-Path $bundle 'SOURCE_COMMIT.txt')

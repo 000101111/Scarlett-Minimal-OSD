@@ -1,6 +1,12 @@
 # Scarlett Minimal OSD
 
+**English · [简体中文](README.zh-CN.md)**
+
 Minimal Windows monitoring overlay and convenient control for **Focusrite Scarlett 16i16 (4th Gen)** through Focusrite Control 2 (FC2).
+
+**English + 简体中文 UI** · [Download the compiled preview](https://github.com/000101111/Scarlett-Minimal-OSD/releases/tag/v0.1.1-alpha) · [Make your own language version with AI](docs/LOCALIZATION.md)
+
+Want another language? Give your AI coding assistant the [ready-to-copy localization prompt](docs/LOCALIZATION.md). All interface strings are grouped in language resources.
 
 > **Unofficial, independent community project.** Not affiliated with or endorsed by Focusrite. "Focusrite" and "Scarlett" are trademarks of their owner. The Windows Release build passes on GitHub Actions. Hardware behavior has **not** been independently tested here; the original contributor reports successful operation on their setup. Other Scarlett models are **not verified**.
 
@@ -33,7 +39,7 @@ The FC2 application remains running when its GUI is hidden; only its window visi
 
 ## For Windows users
 
-1. Download **Scarlett-Minimal-OSD-Windows-x64-Preview.zip** from [the preview release](https://github.com/000101111/Scarlett-Minimal-OSD/releases/tag/v0.1.0-alpha). This contains a compiled EXE; users do not need the SDK or to build the application.
+1. Download **Scarlett-Minimal-OSD-Windows-x64-Preview.zip** from [the preview release](https://github.com/000101111/Scarlett-Minimal-OSD/releases/tag/v0.1.1-alpha). This contains a compiled EXE; users do not need the SDK or to build the application.
 2. Extract it to a writable folder. Make sure `ScarlettMonitorOSD.exe`, `node.exe`, and `bridge/` stay together.
 3. Install .NET 8 Desktop Runtime if Windows requests it. Start the official Focusrite Control 2. If this is a new PC/profile, the compact bridge may require manual pairing using the upstream Focusrite Control API tools; it does not automatically pop up a pairing wizard.
 4. Run `ScarlettMonitorOSD.exe`. Use its tray icon to toggle the FC2 window.
@@ -58,7 +64,15 @@ The executable is a single published WPF entry point but the software is **not o
 
 ## Language / localization
 
-Interface and settings are currently mostly in Chinese. See [`docs/LOCALIZATION.md`](docs/LOCALIZATION.md) for an AI-assisted translation prompt and how to contribute strings as a PR.
+The settings and tray menu support **English and Simplified Chinese**. Open **OSD Settings → Interface language** and choose **System / 简体中文 / English**. Changes apply immediately and are saved when settings close. Chinese Windows UI cultures use Simplified Chinese by default; all others fall back to English. The OSD keeps MAIN / ALT / DIM / MUTE / dB unchanged.
+
+For another language, copy the AI prompt in [`docs/LOCALIZATION.md`](docs/LOCALIZATION.md). It explains how to add a resource file, preserve hardware behavior, build a portable version and check the result. No AI account or translation service is needed to use the app.
+
+### Quick AI translation prompt
+
+```text
+Translate this repository into [YOUR LANGUAGE]. Follow docs/LOCALIZATION.md, add a language resource based on Strings.en.xaml, preserve existing languages and hardware behavior, check layout and language switching, then build a portable Windows ZIP with matching source. Report actual tests separately from unverified behavior. Do not redesign the app or publish without my instruction.
+```
 
 ## License and attribution — review pending
 

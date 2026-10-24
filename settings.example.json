@@ -4,5 +4,6 @@
   "VolumeStepDb": 1.0,
   "MaxGainLimit": 0.0,
   "AutoLaunchFc2": true,
-  "KillFc2OnExit": false
+  "KillFc2OnExit": false,
+  "Language": "auto"
 }

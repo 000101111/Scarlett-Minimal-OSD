@@ -66,6 +66,7 @@ public partial class App : System.Windows.Application
 
         // Load configuration
         _settings = AppSettings.Load();
+        Localization.SetLanguage(_settings.Language);
 
         // Check and auto-launch FC2 if enabled
         if (_settings.AutoLaunchFc2)
@@ -124,22 +125,24 @@ public partial class App : System.Windows.Application
             var contextMenu = new Forms.ContextMenuStrip();
 
             // 1. 显示/隐藏 Focusrite Control 2
-            var toggleFc2Item = new Forms.ToolStripMenuItem("显示/隐藏 Focusrite Control 2");
+            var toggleFc2Item = new Forms.ToolStripMenuItem(Localization.Text("ToggleFc2"));
             toggleFc2Item.Click += (s, e) => Fc2Manager.ToggleFc2();
 
             // 2. OSD 设置
-            var settingsItem = new Forms.ToolStripMenuItem("OSD 设置");
+            var settingsItem = new Forms.ToolStripMenuItem(Localization.Text("TraySettings"));
             settingsItem.Click += (s, e) => ShowSettingsWindow();
 
             // 3. 退出
-            var exitItem = new Forms.ToolStripMenuItem("退出");
+            var exitItem = new Forms.ToolStripMenuItem(Localization.Text("Exit"));
             exitItem.Click += (s, e) => Shutdown();
 
             contextMenu.Opening += (s, e) =>
             {
                 toggleFc2Item.Text = Fc2Manager.IsFc2Visible()
-                    ? "隐藏 Focusrite Control 2"
-                    : "显示 Focusrite Control 2";
+                    ? Localization.Text("HideFc2")
+                    : Localization.Text("ShowFc2");
+                settingsItem.Text = Localization.Text("TraySettings");
+                exitItem.Text = Localization.Text("Exit");
             };
 
             contextMenu.Items.Add(toggleFc2Item);

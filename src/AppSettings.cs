@@ -6,6 +6,7 @@ namespace ScarlettMonitorOSD;
 
 public class AppSettings
 {
+    public string Language { get; set; } = "auto";
     public double BackgroundOpacity { get; set; } = 1.0;
     public double DisplayDurationSeconds { get; set; } = 2.0;
     public double VolumeStepDb { get; set; } = 1.0;
@@ -31,6 +32,7 @@ public class AppSettings
                 var settings = JsonSerializer.Deserialize<AppSettings>(json);
                 if (settings != null)
                 {
+                    settings.Language = Localization.Normalize(settings.Language);
                     settings.BackgroundOpacity = Math.Clamp(settings.BackgroundOpacity, 0.0, 1.0);
                     settings.DisplayDurationSeconds = Math.Clamp(settings.DisplayDurationSeconds, 0.5, 10.0);
                     settings.VolumeStepDb = Math.Clamp(settings.VolumeStepDb, 0.5, 5.0);

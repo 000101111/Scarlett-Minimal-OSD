@@ -1,0 +1,29 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <sys:String x:Key="SettingsTitle">Scarlett OSD 设置</sys:String>
+    <sys:String x:Key="SettingsSubtitle">外观、增益控制与 Focusrite 协同</sys:String>
+    <sys:String x:Key="OpacityLabel">背景透明度</sys:String>
+    <sys:String x:Key="OpacityHelp">0% 为透明背景，100% 为纯黑背景。</sys:String>
+    <sys:String x:Key="DurationLabel">显示时长</sys:String>
+    <sys:String x:Key="DurationHelp">调节监听旋钮后，OSD 保持显示的时间。</sys:String>
+    <sys:String x:Key="DurationFormat">{0:0.0} 秒</sys:String>
+    <sys:String x:Key="StepLabel">滚轮步进</sys:String>
+    <sys:String x:Key="StepHelp">在 Windows 托盘区域滚动时，每格调节的增益。</sys:String>
+    <sys:String x:Key="MaxGainLabel">最大增益上限</sys:String>
+    <sys:String x:Key="MaxGainHelp">软件音量控制的最高增益，默认 0.0 dB。请从低监听音量开始测试。</sys:String>
+    <sys:String x:Key="Fc2Label">Focusrite Control 2 协同</sys:String>
+    <sys:String x:Key="AutoLaunchFc2">启动 OSD 时自动启动 FC2</sys:String>
+    <sys:String x:Key="KillFc2OnExit">退出 OSD 时同时关闭 FC2</sys:String>
+    <sys:String x:Key="TestDisplay">测试显示</sys:String>
+    <sys:String x:Key="SaveDone">保存并完成</sys:String>
+    <sys:String x:Key="LanguageLabel">界面语言</sys:String>
+    <sys:String x:Key="LanguageHelp">立即切换界面语言，关闭设置后保存。</sys:String>
+    <sys:String x:Key="LanguageSystem">跟随系统 / System</sys:String>
+    <sys:String x:Key="TraySettings">OSD 设置</sys:String>
+    <sys:String x:Key="ToggleFc2">显示/隐藏 Focusrite Control 2</sys:String>
+    <sys:String x:Key="ShowFc2">显示 Focusrite Control 2</sys:String>
+    <sys:String x:Key="HideFc2">隐藏 Focusrite Control 2</sys:String>
+    <sys:String x:Key="Exit">退出</sys:String>
+    <sys:String x:Key="Close">关闭</sys:String>
+</ResourceDictionary>
