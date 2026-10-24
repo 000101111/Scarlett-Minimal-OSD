@@ -1,0 +1,52 @@
+name: Publish Windows preview asset
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing preview release tag
+        required: true
+        default: v0.1.0-alpha
+permissions:
+  contents: read
+jobs:
+  build-and-upload:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.tag }}
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Build preview
+        shell: pwsh
+        run: ./build.ps1
+      - name: Include matching application source and notices
+        shell: pwsh
+        run: |
+          $bundle = 'dist/ScarlettMonitorOSD'
+          $sourceDir = Join-Path $bundle 'source'
+          New-Item -ItemType Directory -Force $sourceDir | Out-Null
+          Copy-Item src, bridge, third_party -Destination $sourceDir -Recurse -Force
+          Remove-Item (Join-Path $sourceDir 'bridge/node_modules') -Recurse -Force
+          Remove-Item (Join-Path $sourceDir 'src/bin'), (Join-Path $sourceDir 'src/obj') -Recurse -Force -ErrorAction SilentlyContinue
+          Copy-Item README.md, THIRD_PARTY_NOTICES.md, build.ps1, build.cmd, settings.example.json -Destination $sourceDir
+          Copy-Item README.md -Destination $bundle
+          $nodeLicense = Join-Path (Split-Path (Get-Command node).Source) 'LICENSE'
+          if (Test-Path $nodeLicense) { Copy-Item $nodeLicense (Join-Path $bundle 'NODE-LICENSE.txt') }
+          git rev-parse HEAD | Set-Content (Join-Path $bundle 'SOURCE_COMMIT.txt')
+          Compress-Archive -Path "$bundle/*" -DestinationPath Scarlett-Minimal-OSD-Windows-x64-Preview.zip
+          $hash = (Get-FileHash Scarlett-Minimal-OSD-Windows-x64-Preview.zip -Algorithm SHA256).Hash.ToLower()
+          "$hash  Scarlett-Minimal-OSD-Windows-x64-Preview.zip" | Set-Content SHA256SUMS.txt
+      - name: Attach preview to existing release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          gh release upload "$env:RELEASE_TAG" Scarlett-Minimal-OSD-Windows-x64-Preview.zip SHA256SUMS.txt --repo "$env:GITHUB_REPOSITORY"
